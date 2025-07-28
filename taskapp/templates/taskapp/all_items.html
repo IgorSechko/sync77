@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Items</title>
+    <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.2/date-1.5.6/datatables.min.css" rel="stylesheet" integrity="sha384-oJDz325jnUICFg+ETKw8+hKmQplzeOQi0VqK+XMB9NO8MG3RZyfHnNzv9IKDbi/W" crossorigin="anonymous">
+</head>
+<body>
+    <h1>All Uploaded Items</h1>
+
+    <table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if items %}
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.date }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+    </table>
+
+    <a href="{% url 'upload_json' %}">Upload more JSON</a>
+    <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.2/date-1.5.6/datatables.min.js" integrity="sha384-MGl3yoGlQDfiCE6XhIZHL9Fv0cVAVGiudz0pRxaifWgM9PlEIjNuWrV7Lp1XAuJE" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        let table = new DataTable('#myTable');
+
+    </script>
+
+</body>
+</html>

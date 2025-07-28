@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload JSON</title>
+</head>
+<body>
+    <h1>Upload JSON File</h1>
+
+    {% if success %}
+    <p style="color: green;" >{{ success }}</p>
+    {% endif %}
+
+    {% if errors %}
+        <ul style="color: red;">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    <p>
+        <a href="{% url 'all_items' %}">See list of all the items</a>
+    </p>
+</body>
+</html>
